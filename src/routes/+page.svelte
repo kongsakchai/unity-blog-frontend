@@ -1,7 +1,20 @@
-<script>
-	import Card from '$lib/components/card.svelte';
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	import Card from '$lib/components/common/card.svelte';
+	import PageTransition from '$lib/components/layouts/page-transition.svelte';
+
+	export let data: PageData;
 </script>
 
-<h1>Unity Workshop by P'Kong</h1>
+<PageTransition>
+	<h1 class=" text-black mt-6 mb-4">Unity Workshop</h1>
 
-<Card />
+	<main
+		class=" lg:w-[782px] sm:w-[516px] w-full flex gap-4 flex-wrap sm:flex-row flex-col sm:items-start items-center"
+	>
+		{#each data.blogs as blog, i (blog.id)}
+			<Card {...blog} delay={i} />
+		{/each}
+	</main>
+</PageTransition>

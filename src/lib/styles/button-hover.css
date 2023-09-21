@@ -1,0 +1,34 @@
+.btn-hover {
+	display: inline-block;
+	position: relative;
+	width: fit-content;
+	height: fit-content;
+
+	transition: all 0.1s;
+	transform: translate(var(--scale), var(--scale));
+
+	user-select: none;
+}
+
+.btn-hover::after {
+	display: inline-block;
+	content: '';
+	position: absolute;
+
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	right: 0px;
+
+	border-radius: 0.375em;
+	background-color: black;
+
+	z-index: -10;
+	transition: all 0.1s;
+	transform: translate(var(--scale--after), var(--scale--after));
+}
+
+.btn-hover:hover {
+	--scale: -4px;
+	--scale--after: 4px;
+}
